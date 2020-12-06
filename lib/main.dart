@@ -132,36 +132,42 @@ class _GameState extends State<Game> {
       ),
       body: Column(
         children: <Widget>[
-          GridView.builder(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            itemCount: 9,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-            ),
-            itemBuilder: (BuildContext context, int index) {
-              return InkWell(
-                onTap: () {
-                  setState(() {
-                    if (status[index] == 0) {
-                      isRed ? status[index] = -1 : status[index] = 1;
-                      isRed = !isRed;
-                    }
-                    checkEnd();
-                  });
-                },
-                child: AnimatedContainer(
-                  decoration: BoxDecoration(
-                    color: getColor(index),
-                    border: const Border(
-                      bottom: BorderSide(color: Colors.black),
-                      left: BorderSide(color: Colors.black),
+          Container(
+            color: Colors.black,
+            child: GridView.builder(
+              padding: const EdgeInsets.all(1.0),
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: 9,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                mainAxisSpacing: 1.0,
+                crossAxisSpacing: 1.0,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                return InkWell(
+                  onTap: () {
+                    setState(() {
+                      if (status[index] == 0) {
+                        isRed ? status[index] = -1 : status[index] = 1;
+                        isRed = !isRed;
+                      }
+                      checkEnd();
+                    });
+                  },
+                  child: AnimatedContainer(
+                    decoration: BoxDecoration(
+                      color: getColor(index),
+                      border: const Border(
+                        //bottom: BorderSide(color: Colors.black),
+                        //left: BorderSide(color: Colors.black),
+                      ),
                     ),
+                    duration: const Duration(milliseconds: 500),
                   ),
-                  duration: const Duration(milliseconds: 500),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
           Visibility(
             visible: endGame,
