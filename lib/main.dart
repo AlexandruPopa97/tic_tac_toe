@@ -159,9 +159,9 @@ class _GameState extends State<Game> {
                     decoration: BoxDecoration(
                       color: getColor(index),
                       border: const Border(
-                        //bottom: BorderSide(color: Colors.black),
-                        //left: BorderSide(color: Colors.black),
-                      ),
+                          //bottom: BorderSide(color: Colors.black),
+                          //left: BorderSide(color: Colors.black),
+                          ),
                     ),
                     duration: const Duration(milliseconds: 500),
                   ),
